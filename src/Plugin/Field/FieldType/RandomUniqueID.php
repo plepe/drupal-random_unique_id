@@ -19,6 +19,8 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
  *     @Translation("You may set a template and a list of characters to build the ID from"),
  *   },
  *   category = @Translation("Text"),
+ *   default_widget = "random_unique_id_widget",
+ *   default_formatter = "random_unique_id_default"
  * )
  */
 class RandomUniqueID extends FieldItemBase {
