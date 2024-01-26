@@ -41,9 +41,9 @@ class RandomUniqueID extends WidgetBase {
   }
 
   /**
-   * Form element validation handler for an 'edtf' element.
+   * Form element validation handler for 'random_unique_id' element.
    *
-   * Disallows saving invalid EDTF values.
+   * Any value is okay.
    */
   public static function validateElement($element, FormStateInterface $form_state, $form) {
     return;
