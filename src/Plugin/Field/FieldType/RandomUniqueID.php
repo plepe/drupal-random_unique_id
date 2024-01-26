@@ -115,9 +115,20 @@ class RandomUniqueID extends FieldItemBase {
     $current_value = $this->getValue();
 
     if ($current_value['value'] === '') {
-      $current_value['value'] = 'FOOBAR';
+      $current_value['value'] = $this->createRandomID();
       $this->setValue($current_value);
     }
   }
 
+  public function createRandomID(): string {
+    $settings = [...self::defaultFieldSettings(), ...$this->getSettings()];
+
+    $id = '';
+    $char_count = strlen($settings['characters']) - 1;
+    for ($i = 0; $i < $settings['length']; $i++) {
+      $id .= substr($settings['characters'], random_int(0, $char_count), 1);
+    }
+
+    return $settings['prefix'] . $id . $settings['suffix'];
+  }
 }
