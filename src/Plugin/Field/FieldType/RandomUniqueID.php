@@ -109,4 +109,15 @@ class RandomUniqueID extends FieldItemBase {
     return $element;
   }
 
+  public function preSave(): void {
+    parent::preSave();
+
+    $current_value = $this->getValue();
+
+    if ($current_value['value'] === '') {
+      $current_value['value'] = 'FOOBAR';
+      $this->setValue($current_value);
+    }
+  }
+
 }
