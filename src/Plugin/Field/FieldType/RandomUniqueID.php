@@ -115,7 +115,8 @@ class RandomUniqueID extends FieldItemBase {
     $current_value = $this->getValue();
 
     if ($current_value['value'] === '') {
-      $current_value['value'] = $this->createRandomID();
+      $current_value['value'] = $this->createRandomUniqueID();
+
       $this->setValue($current_value);
     }
   }
@@ -130,5 +131,25 @@ class RandomUniqueID extends FieldItemBase {
     }
 
     return $settings['prefix'] . $id . $settings['suffix'];
+  }
+
+  public function createRandomUniqueID(): string {
+    do {
+      $text = $this->createRandomID();
+      trigger_error($text, E_USER_NOTICE);
+    } while (!$this->checkUnique($text));
+
+    return $text;
+  }
+
+  public function checkUnique ($text): bool {
+    return unique_content_field_validation_field_is_unique(
+      $this->getEntity()->getEntityTypeId(),
+      $this->getLangcode(),
+      $this->getFieldDefinition()->getName(),
+      [$text],
+      $this->getEntity()->bundle(),
+      $this->getEntity()
+    );
   }
 }
