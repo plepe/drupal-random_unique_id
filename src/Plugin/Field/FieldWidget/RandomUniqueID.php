@@ -30,7 +30,7 @@ class RandomUniqueID extends WidgetBase {
     $default_value = isset($items[$delta]->value) ? $items[$delta]->value : '';
 
     $element['value'] = $element + [
-      '#type' => 'textfield',
+      '#type' => 'random_unique_id',
       '#default_value' => $default_value,
       '#element_validate' => [[static::class, 'validateElement']],
       '#required' => false,
