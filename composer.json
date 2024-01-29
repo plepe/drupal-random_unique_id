@@ -1,0 +1,18 @@
+{
+    "name": "drupal/random_unique_id",
+    "type": "drupal-module",
+    "description": "Add a field for random unique IDs",
+    "homepage": "https://github.com/plepe/drupal-random_unique_id",
+    "authors": [
+        {
+            "name": "Stephan Bösch-Plepelits",
+            "homepage": "https://www.drupal.org/u/plepe",
+            "role": "Maintainer"
+        }
+    ],
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "require": {
+      "drupal/unique_content_field_validation": "^1.1"
+    }
+}
